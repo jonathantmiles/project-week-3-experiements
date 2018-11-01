@@ -26,25 +26,7 @@ class CampaignController {
     var currentCampaign: Campaign?
     
     public func setCurrentCampaign(campaign: Campaign) {
-
-//        if let scratchCampaign = currentCampaign,
-//            let current = currentCampaign,
-//            let index = campaigns.firstIndex(of: current) {
-//
-//            campaigns.remove(at: index)
-//            campaigns.insert(scratchCampaign, at: index)
-//
-            //        saveCurrentCampaign()
-            
-            currentCampaign = campaign
-        
-    }
-    
-    func saveCurrentCampaign() {
-        guard let currentCampaign = currentCampaign,
-            let index = campaigns.firstIndex(of: currentCampaign) else { return }
-        campaigns.remove(at: index)
-        campaigns.insert(currentCampaign, at: index)
+        currentCampaign = campaign
     }
     
     // MARK: - Notes management
@@ -52,6 +34,17 @@ class CampaignController {
     func addNote(toCampaign campaign: inout Campaign, withName name: String, details: String, finishSetting: Note.FinishSetting = .stub, noteType: Note.NoteType = .page) {
         let note = Note(name: name, details: details, finishSetting: finishSetting, noteType: noteType)
         campaign.notes.append(note)
+        setCurrentCampaign(campaign: campaign)
+    }
+    
+    func update(note: inout Note, inCampaign campaign: inout Campaign, withName name: String, details: String, finishSetting: Note.FinishSetting, noteType: Note.NoteType) {
+        guard let index = campaign.notes.firstIndex(of: note) else { return }
+        note.name = name
+        note.details = details
+        note.finishSetting = finishSetting
+        note.noteType = noteType
+        campaign.notes.remove(at: index)
+        campaign.notes.insert(note, at: index)
         setCurrentCampaign(campaign: campaign)
     }
 }

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TabBarProtocolTest/Pages View Controllers/NotesTableViewController.swift"
-            timestampString = "562787316.2262599"
+            timestampString = "562787500.521481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -75,22 +75,6 @@
             continueAfterRunningActions = "No"
             filePath = "TabBarProtocolTest/CampaignController.swift"
             timestampString = "562726319.8123291"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "setCurrentCampaign(campaign:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TabBarProtocolTest/Model Controller/CampaignController.swift"
-            timestampString = "562786441.401719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"

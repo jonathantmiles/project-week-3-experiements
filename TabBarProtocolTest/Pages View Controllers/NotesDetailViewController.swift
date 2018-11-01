@@ -36,7 +36,14 @@ class NotesDetailViewController: UIViewController {
             else { return }
         let segIndex = pageTypeSegmentedControl.selectedSegmentIndex
         let noteType = Note.NoteType.allNoteTypes[segIndex]
-        CampaignController.shared.addNote(toCampaign: &CampaignController.shared.campaigns[index], withName: name, details: details, noteType: noteType)
+        if note == nil {
+            CampaignController.shared.addNote(toCampaign: &CampaignController.shared.campaigns[index], withName: name, details: details, noteType: noteType)
+        } else {
+            if var note = note {
+                CampaignController.shared.update(note: &note, inCampaign: &CampaignController.shared.campaigns[index], withName: name, details: details, finishSetting: .stub, noteType: noteType)
+                
+            }
+        }
         navigationController?.popViewController(animated: true)
     }
     
