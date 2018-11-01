@@ -16,6 +16,8 @@ struct Note: Equatable {
     
     enum NoteType: String {
         case character, item, faction, location, quest, page
+        
+        static var allNoteTypes: [NoteType] = [character, item, faction, location, quest, page]
     }
     
     var name: String

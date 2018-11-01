@@ -14,6 +14,8 @@ class NotesDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateViews()
     }
     
     func updateViews() {
@@ -21,6 +23,8 @@ class NotesDetailViewController: UIViewController {
         if let note = note {
             noteNameTextField.text = note.name
             noteDetailsTextField.text = note.details
+            let noteType = note.noteType
+            pageTypeSegmentedControl.selectedSegmentIndex = Note.NoteType.allNoteTypes.firstIndex(of: noteType)!
         }
     }
     
@@ -30,12 +34,15 @@ class NotesDetailViewController: UIViewController {
             let currentCampaign = CampaignController.shared.currentCampaign,
             let index = CampaignController.shared.campaigns.firstIndex(of: currentCampaign)
             else { return }
-        CampaignController.shared.addNote(toCampaign: &CampaignController.shared.campaigns[index], withName: name, details: details)
+        let segIndex = pageTypeSegmentedControl.selectedSegmentIndex
+        let noteType = Note.NoteType.allNoteTypes[segIndex]
+        CampaignController.shared.addNote(toCampaign: &CampaignController.shared.campaigns[index], withName: name, details: details, noteType: noteType)
         navigationController?.popViewController(animated: true)
     }
     
     @IBOutlet weak var noteNameTextField: UITextField!
     @IBOutlet weak var noteDetailsTextField: UITextView!
+    @IBOutlet weak var pageTypeSegmentedControl: UISegmentedControl!
     
     /*
     // MARK: - Navigation
