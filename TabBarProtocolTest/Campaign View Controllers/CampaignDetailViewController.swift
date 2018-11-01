@@ -27,6 +27,7 @@ class CampaignDetailViewController: UIViewController, ChooseCampaignDelegate {
         guard let campaign = campaign else { return }
 //        currentcampaign = campaign
         CampaignController.shared.setCurrentCampaign(campaign: campaign)
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Navigation

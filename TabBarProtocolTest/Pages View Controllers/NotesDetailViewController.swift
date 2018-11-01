@@ -19,12 +19,17 @@ class NotesDetailViewController: UIViewController {
     }
     
     func updateViews() {
+        guard isViewLoaded else { return }
         title = note?.name ?? "Add New Note"
+        pageTypeSegmentedControl.selectedSegmentIndex = 5
+        finishSettingSegmentedControl.selectedSegmentIndex = 0
         if let note = note {
             noteNameTextField.text = note.name
             noteDetailsTextField.text = note.details
             let noteType = note.noteType
-            pageTypeSegmentedControl.selectedSegmentIndex = Note.NoteType.allNoteTypes.firstIndex(of: noteType)!
+            pageTypeSegmentedControl.selectedSegmentIndex = Note.NoteType.allNoteTypes.firstIndex(of: noteType) ?? 5
+            let finishSetting = note.finishSetting
+            finishSettingSegmentedControl.selectedSegmentIndex = Note.FinishSetting.allFinishSettings.firstIndex(of: finishSetting) ?? 0
         }
     }
     
@@ -34,13 +39,15 @@ class NotesDetailViewController: UIViewController {
             let currentCampaign = CampaignController.shared.currentCampaign,
             let index = CampaignController.shared.campaigns.firstIndex(of: currentCampaign)
             else { return }
-        let segIndex = pageTypeSegmentedControl.selectedSegmentIndex
-        let noteType = Note.NoteType.allNoteTypes[segIndex]
+        let noteSegIndex = pageTypeSegmentedControl.selectedSegmentIndex
+        let noteType = Note.NoteType.allNoteTypes[noteSegIndex]
+        let finishSegIndex = finishSettingSegmentedControl.selectedSegmentIndex
+        let finishSetting = Note.FinishSetting.allFinishSettings[finishSegIndex]
         if note == nil {
-            CampaignController.shared.addNote(toCampaign: &CampaignController.shared.campaigns[index], withName: name, details: details, noteType: noteType)
+            CampaignController.shared.addNote(toCampaign: &CampaignController.shared.campaigns[index], withName: name, details: details, finishSetting: finishSetting, noteType: noteType)
         } else {
             if var note = note {
-                CampaignController.shared.update(note: &note, inCampaign: &CampaignController.shared.campaigns[index], withName: name, details: details, finishSetting: .stub, noteType: noteType)
+                CampaignController.shared.update(note: &note, inCampaign: &CampaignController.shared.campaigns[index], withName: name, details: details, finishSetting: finishSetting, noteType: noteType)
                 
             }
         }
@@ -50,6 +57,7 @@ class NotesDetailViewController: UIViewController {
     @IBOutlet weak var noteNameTextField: UITextField!
     @IBOutlet weak var noteDetailsTextField: UITextView!
     @IBOutlet weak var pageTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var finishSettingSegmentedControl: UISegmentedControl!
     
     /*
     // MARK: - Navigation

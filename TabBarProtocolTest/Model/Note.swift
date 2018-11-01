@@ -12,6 +12,8 @@ struct Note: Equatable {
     
     enum FinishSetting: String {
         case stub, short, draft, polished, finalized
+        
+        static var allFinishSettings: [FinishSetting] = [stub, short, draft, polished, finalized]
     }
     
     enum NoteType: String {

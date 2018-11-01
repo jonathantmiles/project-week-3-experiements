@@ -207,13 +207,13 @@
                                 <rect key="frame" x="40" y="104" width="295" height="474"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Note title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xwt-4b-8t5">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="28"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dQo-ht-9Df">
-                                        <rect key="frame" x="0.0" y="38" width="295" height="31"/>
+                                        <rect key="frame" x="0.0" y="36" width="295" height="29"/>
                                         <segments>
                                             <segment title="Character"/>
                                             <segment title="Item"/>
@@ -224,11 +224,21 @@
                                         </segments>
                                     </segmentedControl>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n0G-VK-4GE">
-                                        <rect key="frame" x="0.0" y="76" width="295" height="398"/>
+                                        <rect key="frame" x="0.0" y="72" width="295" height="366"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ozu-3D-8OU">
+                                        <rect key="frame" x="0.0" y="446" width="295" height="29"/>
+                                        <segments>
+                                            <segment title="Stub"/>
+                                            <segment title="Short"/>
+                                            <segment title="Draft"/>
+                                            <segment title="Polished"/>
+                                            <segment title="Finalized"/>
+                                        </segments>
+                                    </segmentedControl>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="dQo-ht-9Df" firstAttribute="height" secondItem="Xwt-4b-8t5" secondAttribute="height" id="iqh-dJ-jbx"/>
@@ -252,6 +262,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="finishSettingSegmentedControl" destination="ozu-3D-8OU" id="XiH-x6-FEJ"/>
                         <outlet property="noteDetailsTextField" destination="n0G-VK-4GE" id="D77-Mq-PJu"/>
                         <outlet property="noteNameTextField" destination="Xwt-4b-8t5" id="6CL-gM-H4f"/>
                         <outlet property="pageTypeSegmentedControl" destination="dQo-ht-9Df" id="AYP-ns-g6e"/>
@@ -259,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="By6-Q4-p46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2346" y="994"/>
+            <point key="canvasLocation" x="2343" y="979"/>
         </scene>
         <!--Item-->
         <scene sceneID="SSi-lz-yO1">
